@@ -1,0 +1,10 @@
+*.dcu
+*.local
+*.identcache
+
+Exe/
+Data/
+Log/
+__history/
+Debug/
+Release/
