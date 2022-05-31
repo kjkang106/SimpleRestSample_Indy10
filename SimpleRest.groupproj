@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{E20F5811-2A97-401B-A4DB-813BBC240ED5}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="SimpleRestServer\Source\SimpleRestServer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="SimpleRestClient\Source\SimpleRestClient.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="SimpleRestServer">
+			<MSBuild Projects="SimpleRestServer\Source\SimpleRestServer.dproj"/>
+		</Target>
+		<Target Name="SimpleRestServer:Clean">
+			<MSBuild Targets="Clean" Projects="SimpleRestServer\Source\SimpleRestServer.dproj"/>
+		</Target>
+		<Target Name="SimpleRestServer:Make">
+			<MSBuild Targets="Make" Projects="SimpleRestServer\Source\SimpleRestServer.dproj"/>
+		</Target>
+		<Target Name="SimpleRestClient">
+			<MSBuild Projects="SimpleRestClient\Source\SimpleRestClient.dproj"/>
+		</Target>
+		<Target Name="SimpleRestClient:Clean">
+			<MSBuild Targets="Clean" Projects="SimpleRestClient\Source\SimpleRestClient.dproj"/>
+		</Target>
+		<Target Name="SimpleRestClient:Make">
+			<MSBuild Targets="Make" Projects="SimpleRestClient\Source\SimpleRestClient.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="SimpleRestServer;SimpleRestClient"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="SimpleRestServer:Clean;SimpleRestClient:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="SimpleRestServer:Make;SimpleRestClient:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
